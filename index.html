@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- tailwind cdnj -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Crud</title>
+</head>
+<body class="bg-gray-100 text-center ">
+    <header class="w-[80%] bg-gray-800 text-gray-100 mx-auto mt-3 p-4 rounded-2xl ">
+        <h1 class="text-5xl font-semibold">Crud js </h1>
+    </header>
+
+    <main class="text-gray-100 w-[80%] m-auto py-4">
+        <div class="flex justify-between align-center flex-wrap">
+            <div class="flex gap-5">
+              <button class="text-green-800 hover:text-green-700 flex items-center transition duration-30" id="AjouterBtn"><span class="font-semibold mx-1">Ajouter</span><i class="fa-solid fa-circle-plus text-3xl"></i></button>
+              <button class="text-red-800 rounded-xl hover:text-red-700 flex items-center transition duration-30" id="SupprimerToutBtn"><span class="font-semibold mx-1">Supprimer tous</span><i class="fa-solid fa-circle-xmark text-3xl"></i></button>
+  
+            </div>
+            <div class="flex items-center px-2">
+                <input class="bg-transparent border text-gray-900 border-gray-800 rounded-2xl py-1  px-4 mx-2 hover:border hover:border-red-800 hover:border-2 placeholder-gray-400 transition duration-30" id="RechercheInput" type="text" placeholder="Entrer le Filiere"  required>
+                <button class="text-red-800 hover:text-red-700  flex items-center transition duration-30" id="RechercheBtn"><i class="fa-solid fa-magnifying-glass text-2xl hover:text-3xl transition duration-50"></i></button>
+            </div>
+        </div>
+        <!-- =================table========================== -->
+        <div class="py-2">
+            <table class="min-w-full bg-white shadow-lg rounded-lg">
+                <thead class="">
+                    <tr class="bg-gray-800 text-white text-center">
+                        <th  class="py-2 px-5">ID</th>
+                        <th  class="py-2 px-5">Prenom</th>
+                        <th  class="py-2 px-5">Nom</th>
+                        <th  class="py-2 px-5">Filiere</th>
+                        <th  class="py-2 px-5">Note</th>
+                        <th  class="py-2 px-5">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-900 bg-gray-800 ">                        
+                    <!-- <tr class="border-b text-gray-100 ">
+                        <td class="py-3 px-5">0</td>
+                        <td class="py-3 px-5">soufiane</td>
+                        <td class="py-3 px-5">oulahcen</td>
+                        <td class="py-3 px-5">DEVOWPS</td>
+                        <td class="py-3 px-5">10</td>
+                        <td class="py-3 px-5">
+                            <button class="bg-green-800 text-white py-1 px-3 rounded hover:bg-green-700">Modifier</button>
+                            <button class="bg-red-500 text-white py-1 px-3 rounded ml-2 hover:bg-red-700">Supprimer</button>
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===================block d'ajouter======================== -->
+         <div class="py-2 border px-4 rounded-2xl bg-gray-800 hidden" id="AjouteBlock">
+            <h1 class="py-2 font-semibold text-2xl">Formulaire d'ajouter</h1>
+            <form action="" class="flex flex-col gap-3">
+              <div class="grid grid-cols-[1fr_2fr]">
+                <label for="numero">Numéro d'étudiant</label>
+                <input type="number" id="numero" class="bg-transparent border px-2 py-1 rounded-xl" placeholder="Entrez le numéro d'étudiant">
+              </div>
+              <div class="grid grid-cols-[1fr_2fr]">
+                <label for="prenom">Prénom</label>
+                <input type="text" id="prenom" class="bg-transparent border px-2 py-1 rounded-xl" placeholder="Entrez le prénom">
+              </div>
+              <div class="grid grid-cols-[1fr_2fr]">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" class="bg-transparent border px-2 py-1 rounded-xl" placeholder="Entrez le nom">
+              </div>
+              <div class="grid grid-cols-[1fr_2fr]">
+                <label for="filiere">Filière</label>
+                <input type="text" id="filiere" class="bg-transparent border px-2 py-1 rounded-xl" placeholder="Entrez la filière">
+              </div>
+              <div class="grid grid-cols-[1fr_2fr]">
+                <label for="note">Note</label>
+                <input type="number" id="note" class="bg-transparent border px-2 py-1 rounded-xl" placeholder="Entrez la note">
+              </div>
+              <button class="bg-green-800 py-1 my-2 rounded-lg transition duration-30 hover:bg-green-700" id="ValiderBtn">Valider</button>
+            </form>
+          </div>
+
+        
+        <!-- ====================block de modifier======================================= -->
+
+        <div class="py-2 border px-4 rounded-2xl bg-gray-800 hidden" id="ModifierBlock">
+            <h1 class="py-2 font-semibold text-2xl">Modifier Stagaire</h1>
+            <form action="" class="flex flex-col gap-3">
+              <div class="grid grid-cols-[1fr_2fr]">
+                <label for="numero">Nouveau Numéro</label>
+                <input type="number" id="Nnumero" class="bg-transparent border px-2 py-1 rounded-xl" placeholder="Entrez le numéro d'étudiant">
+              </div>
+              <div class="grid grid-cols-[1fr_2fr]">
+                <label for="prenom">nouveau Prénom</label>
+                <input type="text" id="Nprenom" class="bg-transparent border px-2 py-1 rounded-xl" placeholder="Entrez le prénom">
+              </div>
+              <div class="grid grid-cols-[1fr_2fr]">
+                <label for="nom">nouveau Nom</label>
+                <input type="text" id="Nnom" class="bg-transparent border px-2 py-1 rounded-xl" placeholder="Entrez le nom">
+              </div>
+              <div class="grid grid-cols-[1fr_2fr]">
+                <label for="filiere">Nouveau Filière</label>
+                <input type="text" id="Nfiliere" class="bg-transparent border px-2 py-1 rounded-xl" placeholder="Entrez la filière">
+              </div>
+              <div class="grid grid-cols-[1fr_2fr]">
+                <label for="note">Nouveau Note</label>
+                <input type="number" id="Nnote" class="bg-transparent border px-2 py-1 rounded-xl" placeholder="Entrez la note">
+              </div>
+              <button class="bg-green-800 py-1 my-2 rounded-lg transition duration-30 hover:bg-green-700" id="ModifierBtn">Modifier</button>
+            </form>
+          </div>
+
+    </main>
+    <script src="./script.js"></script>
+</body>
+</html>
