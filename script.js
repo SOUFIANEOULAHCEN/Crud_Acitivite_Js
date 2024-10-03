@@ -138,7 +138,7 @@ function ModifierStd(i) {
       note: document.getElementById("Nnote").value,
     });
     localStorage.setItem("db", JSON.stringify(data));
-    alert("les informations sont modifier avec success");
+    // alert("les informations sont modifier avec success");
     document.getElementById("ModifierBlock").classList.toggle("hidden");
     window.location.reload(true);
   });
@@ -197,8 +197,8 @@ function Rechercher() {
                 <td class="py-3 px-5">${element.filiere}</td>
                 <td class="py-3 px-5">${element.note}</td>
                 <td class="py-3 px-5">
-                    <button class="bg-green-800 text-white py-1 px-3 rounded hover:bg-green-700" onclick='ModifierStd(${dataOriginale.indexOf(element)})'><i class="fa-solid fa-pen"></i></button>
-                    <button class="bg-red-500 text-white py-1 px-3 rounded ml-2 hover:bg-red-700" onclick='SupprimerStd(${dataOriginale.indexOf(element)})'><i class="fa-solid fa-trash"></i></button>
+                    <button class="hover:text-green-800 text-white py-1 px-3 rounded " onclick='ModifierStd(${dataOriginale.indexOf(element)})'><i class="fa-solid fa-pen"></i></button>
+                    <button class="hover:text-red-500 text-white py-1 px-3 rounded ml-2" onclick='SupprimerStd(${dataOriginale.indexOf(element)})'><i class="fa-solid fa-trash"></i></button>
                 </td>
             </tr>
           `;
